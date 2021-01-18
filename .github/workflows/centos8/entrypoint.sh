@@ -16,6 +16,7 @@ yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel redhat-rpm-config
 
 
 export FC=gfortran
+export FCFLAGS=
 mkdir -p test
 cd test
 cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0  -DHepMC3_DIR=/usr/share/HepMC3/cmake
