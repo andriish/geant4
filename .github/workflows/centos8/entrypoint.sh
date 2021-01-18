@@ -13,10 +13,11 @@ yum -y copr enable averbyts/HEPrpms
 yum -y install geant4
 #yum -y install pythia8-devel pythia8 pythia8-data 
 
+find /usr | grep cmake | grep Geant
 
 mkdir -p test
 cd test
-cmake -B. -S ../examples/extended/eventgenerator
+cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0
 make -j 2
 
 
