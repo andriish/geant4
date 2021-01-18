@@ -10,14 +10,14 @@ yum -y install  gcc gcc-c++ gcc-gfortran make which cmake cmake-data cmake-files
 yum -y install  HepMC3 HepMC3-devel
 yum -y install yum-plugin-copr
 yum -y copr enable averbyts/HEPrpms
-yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel
+yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel redhat-rpm-config
 #yum -y install pythia8-devel pythia8 pythia8-data 
 
 find /usr | grep cmake | grep Geant
 
 mkdir -p test
 cd test
-cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0
+cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0  -DHepMC3_DIR=/usr/share/HepMC3/cmake
 make -j 2
 
 
