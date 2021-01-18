@@ -14,8 +14,8 @@ yum -y copr enable averbyts/HEPrpms
 yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel redhat-rpm-config expat expat-devel zlib zlib-devel pythia6
 #yum -y install pythia8-devel pythia8 pythia8-data 
 
-find /usr | grep cmake | grep Geant
 
+export FC=gfortran
 mkdir -p test
 cd test
 cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0  -DHepMC3_DIR=/usr/share/HepMC3/cmake
