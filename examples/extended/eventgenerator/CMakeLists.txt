@@ -27,8 +27,8 @@ endif()
 #----------------------------------------------------------------------------
 # HepMC3 examples require HepMC3
 #
-find_package(HepMC3 QUIET)
-if(HEPMC3_FOUND)
+find_package(HepMC3)
+if(HepMC3_FOUND)
   add_subdirectory(HepMC3)
 else()
   message(STATUS "G4 Examples: HepMC3 package not found. --> HepMC3 examples disabled.") 
