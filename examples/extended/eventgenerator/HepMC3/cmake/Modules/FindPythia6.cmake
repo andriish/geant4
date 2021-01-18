@@ -25,7 +25,7 @@ find_library(PYTHIA6_LIBRARY NAMES pythia6 Pythia6 PATHS
 
 if(PYTHIA6_LIBRARY)
   message(STATUS "Found Pythia6 library at ${PYTHIA6_LIBRARY}")
-  set(PYTHIA6_FOUND 1 )
+  set(PYTHIA6_FOUND TRUE )
 endif()
 
 
