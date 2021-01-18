@@ -10,7 +10,7 @@ yum -y install  gcc gcc-c++ gcc-gfortran make which cmake cmake-data cmake-files
 yum -y install  HepMC3 HepMC3-devel HepMC HepMC-devel
 yum -y install yum-plugin-copr
 yum -y copr enable averbyts/HEPrpms
-yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel redhat-rpm-config expat expat-devel
+yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel redhat-rpm-config expat expat-devel zlib zlib-devel
 #yum -y install pythia8-devel pythia8 pythia8-data 
 
 find /usr | grep cmake | grep Geant
