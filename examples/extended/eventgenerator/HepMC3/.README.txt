@@ -1,5 +1,5 @@
 
-///\file "eventgenerator/HepMC/.README.txt"
+///\file "eventgenerator/HepMC3/.README.txt"
 ///\brief Examples HepMC README page
 
 /*! \page Examples_HepMC Category "eventgenerator/HepMC"
@@ -11,7 +11,7 @@ It also include an example for demonstrating MC truth handling with HepMC.
 \section HepMC_s1 Requirements for external software packages
 
 \subsection HepMC_sub_s11 HepMC
-  - Tested version : 2.06.09
+  - Tested version : 3.02.03
   - http://lcgapp.cern.ch/project/simu/HepMC/
 
   Note: examples were tested only on Linux with gcc.

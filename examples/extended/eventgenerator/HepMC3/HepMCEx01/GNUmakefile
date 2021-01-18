@@ -11,7 +11,7 @@ endif
 
 .PHONY: all
 
-ifdef HEPMC_DIR
+ifdef HEPMC3_DIR
 all : pythia6 lib bin
 # if you do not use Pythia library, replace the line above with the one below.
 # all : lib bin

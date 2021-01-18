@@ -12,8 +12,8 @@ include(${Geant4_USE_FILE})
 #----------------------------------------------------------------------------
 # Find HepMC (required package)
 #
-find_package(HepMC QUIET)
-if(NOT HEPMC_FOUND)
+find_package(HepMC3 QUIET)
+if(NOT HEPMC3_FOUND)
   message(STATUS "G4 Examples: HepMC package not found. --> example_MyPythia example disabled")  
   return()
 endif()
@@ -35,12 +35,12 @@ endif()
 include_directories(${HEPMC_INCLUDE_DIR})
 add_executable(example_MyPythia example_MyPythia.cxx)
 target_link_libraries(example_MyPythia
-                      ${HEPMC_LIBRARIES} ${HEPMC_FIO_LIBRARIES}
+                      ${HEPMC3_LIBRARIES}
                       ${PYTHIA6_LIBRARIES} gfortran)
 
 # if pythia is compiled with g77, link with -lg2c instead.
 #target_link_libraries(example_MyPythia
-#                      ${HEPMC_LIBRARIES} ${HEPMC_FIO_LIBRARIES}
+#                      ${HEPMC3_LIBRARIES}
 #                      ${PYTHIA6_LIBRARIES} g2c)
 
 #----------------------------------------------------------------------------

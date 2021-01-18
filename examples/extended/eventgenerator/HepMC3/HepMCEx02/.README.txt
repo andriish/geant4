@@ -1,5 +1,5 @@
 
-///\file "eventgenerator/HepMC/HepMCEx02/.README.txt"
+///\file "eventgenerator/HepMC3/HepMCEx02/.README.txt"
 ///\brief Example HepMCEx02 README page
 
 /*! \page ExampleHepMCEx02 Example HepMCEx02
