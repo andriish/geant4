@@ -11,14 +11,14 @@ endif
 
 .PHONY: all
 
-ifdef HEPMC_DIR
+ifdef HEPMC3_DIR
 all: lib bin
   include $(G4INSTALL)/config/binmake.gmk
 
-  INCFLAGS  += -I$(HEPMC_DIR)/include
-  LDLIBS    += -L$(HEPMC_DIR)/lib -lHepMC
+  INCFLAGS  += -I$(HEPMC3_DIR)/include
+  LDLIBS    += -L$(HEPMC3_DIR)/lib -lHepMC3
 else
 all:
 	@echo 'ERROR - HEPMC_DIR not defined in the environment !'
-	@echo '        Tested with HepMC release 2.06.03.'
+	@echo '        Tested with HepMC release 3.02.03.'
 endif

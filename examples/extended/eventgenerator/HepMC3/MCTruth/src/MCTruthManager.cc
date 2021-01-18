@@ -174,8 +174,6 @@ void MCTruthManager::AddParticle(G4LorentzVector& momentum,
             // FIXME  SET SHITTY BARCODE  dummypart->suggest_barcode(500000+partID);
             childvtx->add_particle_in(dummypart);
             motherendvtx->add_particle_out(dummypart);
-
-
           }
         }
         else // biological
@@ -212,7 +210,6 @@ void MCTruthManager::AddParticle(G4LorentzVector& momentum,
           HepMC3::GenVertexPtr orig_mother_end_vtx = mother->end_vertex();
           orig_mother_end_vtx->remove_particle_in(mother);
           orig_mother_end_vtx->remove_particle_out(mother);
-
 
           // and attach it to the new vertex
           //
@@ -306,4 +303,5 @@ void MCTruthManager::PrintTree(HepMC3::GenParticlePtr particle, G4String offset)
     PrintTree(it, offset + deltaoffset);
   } 
 }
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....

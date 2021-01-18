@@ -31,9 +31,9 @@ all : pythia6 lib bin
   INCFLAGS  += -I$(HEPMC_DIR)/include
 
   ifdef G4LIB_USE_PYTHIA
-      LDLIBS1  += -L$(HEPMC_DIR)/lib -lHepMC -lHepMCfio -L$(G4TMPDIR) -lPythia6 -lg2c
+      LDLIBS1  += -L$(HEPMC3_DIR)/lib -lHepMC3 -L$(G4TMPDIR) -lPythia6 -lg2c
   else
-      LDLIBS1  += -L$(HEPMC_DIR)/lib -lHepMC -lHepMCfio $(G4TMPDIR)/HEPEvtcom.o
+      LDLIBS1  += -L$(HEPMC3_DIR)/lib -lHepMC3 $(G4TMPDIR)/HEPEvtcom.o
   endif
 
   # Path for PYTHIA Fortran library. Based on CERNLIB-2005.
@@ -57,5 +57,5 @@ else
 
 all:
 	@echo 'ERROR - HEPMC_DIR not defined in the environment !'
-	@echo '        Requires HepMC release 1.27.'
+	@echo '        Requires HepMC release 3.1.0 or higher'
 endif
