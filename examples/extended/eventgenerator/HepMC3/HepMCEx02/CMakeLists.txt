@@ -93,15 +93,11 @@ set( headers
                    ${PROJECT_SOURCE_DIR}/include/H02SteppingAction.hh            
 
                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4Interface.hh            
-                   ${PROJECT_SOURCE_DIR}/include/HepMCG4AsciiReaderMessenger.hh
                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4AsciiReaderMessenger.hh 
-                   ${PROJECT_SOURCE_DIR}/include/HepMCG4AsciiReader.hh           
-                   ${PROJECT_SOURCE_DIR}/include/HepMCG4PythiaMessenger.hh                   
                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4PythiaInterface.hh      
-                   ${PROJECT_SOURCE_DIR}/include/HepMCG4Interface.hh 
                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4AsciiReader.hh          
                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4PythiaMessenger.hh      
-                   ${PROJECT_SOURCE_DIR}/include/HepMCG4PythiaInterface.hh
+
                    )
 
 #----------------------------------------------------------------------------
