@@ -5,7 +5,7 @@
 # PYTHIA6_FOUND.  If false, you cannot build anything that requires Pythia6.
 # PYTHIA6_LIBRARY, where to find the libPythia6 library.
 
-set(PYTHIA6_FOUND 0)
+set(PYTHIA6_FOUND FALSE)
 
 
 find_library(PYTHIA6_LIBRARY NAMES pythia6 Pythia6 PATHS
@@ -18,6 +18,7 @@ find_library(PYTHIA6_LIBRARY NAMES pythia6 Pythia6 PATHS
   /usr/lib/pythia6
   /usr/local/lib/pythia6
   /usr/lib
+  /usr/lib64
   /usr/local/lib
   DOC "Specify the Pythia6 library here."
 )
