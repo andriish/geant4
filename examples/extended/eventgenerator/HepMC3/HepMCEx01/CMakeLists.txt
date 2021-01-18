@@ -117,10 +117,10 @@ set( headers
                     ${PROJECT_SOURCE_DIR}/include/ExN04EventAction.hh                     
                     ${PROJECT_SOURCE_DIR}/include/ExN04StackingActionMessenger.hh         
 
-                    ${PROJECT_SOURCE_DIR}/include/HepMCG4Interface.hh
-                    ${PROJECT_SOURCE_DIR}/include/HepMCG4AsciiReaderMessenger.hh
+                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4Interface.hh
+                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4AsciiReaderMessenger.hh
                     ${PROJECT_SOURCE_DIR}/include/HepMC3G4AsciiReader.hh                  
-                    ${PROJECT_SOURCE_DIR}/include/HepMCG4PythiaInterface.hh
+                    ${PROJECT_SOURCE_DIR}/include/HepMC3G4PythiaInterface.hh
                     ${PROJECT_SOURCE_DIR}/include/HepMC3G4AsciiReaderMessenger.hh         
                     )
 
