@@ -108,8 +108,17 @@ extern "C" {
   int  type_of_call pycomp(int *kf);
   void type_of_call py1ent(int&, int&, double&, double&, double&);
   void*  pythia6_common_address(const char*);
-}
+//}
+/*
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpythia6.so: undefined reference to `upinit_'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpythia6.so: undefined reference to `upveto_'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpythia6.so: undefined reference to `upevnt_'
+*/
 
+int upinit_(){}
+int upveto_(){}
+int upevnt_(){}
+}
 // Direct declaration of pythia6 common blocks
 // extern "C" {
 //   extern Pyjets_t pyjets_;
