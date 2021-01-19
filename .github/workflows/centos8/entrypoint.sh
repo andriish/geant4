@@ -7,8 +7,7 @@ yum -y install dnf-plugins-core
 dnf config-manager --set-enabled PowerTools
 dnf config-manager --set-enabled powertools
 yum -y install  gcc gcc-c++ gcc-gfortran make which cmake cmake-data cmake-filesystem
-yum -y install  HepMC3 HepMC3-devel 
-#HepMC HepMC-devel
+yum -y install  HepMC3 HepMC3-devel HepMC HepMC-devel
 yum -y install yum-plugin-copr
 yum -y copr enable averbyts/HEPrpms
 yum -y install geant4 geant4-devel clhep clhep-devel PTL-devel redhat-rpm-config expat expat-devel zlib zlib-devel pythia6 lhapdf lhapdf-devel
@@ -19,8 +18,7 @@ export FC=gfortran
 export FCFLAGS=
 mkdir -p test
 cd test
-cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0  -DHepMC3_DIR=/usr/share/HepMC3/cmake -DCMAKE_Fortran_FLAGS=-fPIC \
- -DCMAKE_C_FLAGS=-fPIC -DCMAKE_CXX_FLAGS=-fPIC
+cmake -B. -S ../examples/extended/eventgenerator -DGeant4_DIR=/usr/lib64/Geant4-10.7.0  -DHepMC3_DIR=/usr/share/HepMC3/cmake -DCMAKE_Fortran_FLAGS=-fPIC -DCMAKE_C_FLAGS=-fPIC -DCMAKE_CXX_FLAGS=-fPIC
 make -j 2
 
 

@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.8...3.18)
 if(${CMAKE_VERSION} VERSION_LESS 3.12)
   cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
-project(MCTruth)
+project(MC3Truth)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, no UI and Vis drivers activated
@@ -54,17 +54,15 @@ set( headers
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(mctruthex mctruthex.cc ${sources} ${headers})
-target_link_libraries(mctruthex ${Geant4_LIBRARIES} ${EVENT_RECORD_LIBRARIES} )
+add_executable(mc3truthex ${PROJECT_SOURCE_DIR}/mctruthex.cc ${sources} ${headers})
+target_link_libraries(mc3truthex ${Geant4_LIBRARIES} ${EVENT_RECORD_LIBRARIES} )
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
 # build MCTruth. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(MCTruth_SCRIPTS
-   
-  )
+set(MCTruth_SCRIPTS)
 
 foreach(_script ${MCTruth_SCRIPTS})
   configure_file(
@@ -78,7 +76,7 @@ endforeach()
 # Add program to the project targets
 # (this avoids the need of typing the program name after make)
 #
-add_custom_target(MCTruth DEPENDS mctruthex)
+add_custom_target(MCTruth3 DEPENDS mctruthex)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX

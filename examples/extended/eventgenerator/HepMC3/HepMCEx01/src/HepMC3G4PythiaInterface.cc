@@ -70,7 +70,6 @@ HepMC3G4PythiaInterface::HepMC3G4PythiaInterface()
    HepMC3::HEPEVT_Wrapper::set_hepevt_address((char*)(&hepevt_));
    
   messenger= new HepMC3G4PythiaMessenger(this);
-printf("OK+++++++++");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -146,15 +145,12 @@ HepMC3::GenEvent* HepMC3G4PythiaInterface::GenerateHepMCEvent()
 
   call_pyhepc(1);
   
-  
-
-  
-         HepMC3::GenEvent* evt=new HepMC3::GenEvent(HepMC3::Units::GEV,HepMC3::Units::MM);
-        for( int i=1; i<=HepMC3::HEPEVT_Wrapper::number_entries(); i++ )
-            if (HepMC3::hepevtptr->jmohep[i-1][1]<HepMC3::hepevtptr->jmohep[i-1][0])  HepMC3::hepevtptr->jmohep[i-1][1]=HepMC3::hepevtptr->jmohep[i-1][0];
-        HepMC3::HEPEVT_Wrapper::HEPEVT_to_GenEvent(evt);
-        evt->set_run_info(fGenRunInfo);
-        evt->weights()=std::vector<double>(fGenRunInfo->weight_names().size(),1.0);
+  HepMC3::GenEvent* evt=new HepMC3::GenEvent(HepMC3::Units::GEV,HepMC3::Units::MM);
+  for( int i=1; i<=HepMC3::HEPEVT_Wrapper::number_entries(); i++ )
+  if (HepMC3::hepevtptr->jmohep[i-1][1]<HepMC3::hepevtptr->jmohep[i-1][0])  HepMC3::hepevtptr->jmohep[i-1][1]=HepMC3::hepevtptr->jmohep[i-1][0];
+  HepMC3::HEPEVT_Wrapper::HEPEVT_to_GenEvent(evt);
+  evt->set_run_info(fGenRunInfo);
+  evt->weights()=std::vector<double>(fGenRunInfo->weight_names().size(),1.0);
   evt-> set_event_number(nevent++);
   if(verbose>0) HepMC3::Print::content(*evt);
 

@@ -61,8 +61,9 @@ void HepMC3G4AsciiReader::Initialize()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 HepMC3::GenEvent* HepMC3G4AsciiReader::GenerateHepMCEvent()
 {
-  HepMC3::GenEvent* evt;//= asciiInput-> read_next_event();
-  if(!evt) return 0; // no more event
+  HepMC3::GenEvent* evt= new HepMC3::GenEvent();
+  asciiInput->read_event(*evt);
+  if(asciiInput->failed()) return nullptr; // no more event
 
   if(verbose>0) HepMC3::Print::content(*evt);
 

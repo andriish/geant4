@@ -41,6 +41,7 @@
 
 #include "MCTruthManager.hh"
 
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
 static MCTruthManager* instance = 0;
@@ -163,15 +164,14 @@ void MCTruthManager::AddParticle(G4LorentzVector& momentum,
             //
             
             fEvent->add_vertex(childvtx);
-            // FIXME  SET SHITTY BARCODE childvtx->suggest_barcode(-500000-partID);
+            childvtx->add_attribute("barcode",std::make_shared<HepMC3::IntAttribute>(-500000-partID));
 
-            HepMC3::GenParticlePtr dummypart =
-               std::make_shared<HepMC3::GenParticle>(HepMC3::FourVector(),-999999);
+            HepMC3::GenParticlePtr dummypart = std::make_shared<HepMC3::GenParticle>(HepMC3::FourVector(),-999999);
 
             // the dummy particle gets the barcode 500000
             // plus the daughter particle barcode
             //
-            // FIXME  SET SHITTY BARCODE  dummypart->suggest_barcode(500000+partID);
+            dummypart->add_attribute("barcode",std::make_shared<HepMC3::IntAttribute>(500000+partID));
             childvtx->add_particle_in(dummypart);
             motherendvtx->add_particle_out(dummypart);
           }
@@ -224,9 +224,11 @@ void MCTruthManager::AddParticle(G4LorentzVector& momentum,
            
           // we also reset the barcodes of the vertices
           //
+          int motherbarcode  = HepMC3::barcode(mother);
           //FIXME orig_mother_end_vtx->suggest_barcode(-fSegmentations[motherID]*10000000 - mother->barcode());
           //FIXME childvtx->suggest_barcode(-mother->barcode());
-
+          orig_mother_end_vtx->add_attribute("barcode",std::make_shared<HepMC3::IntAttribute>(-fSegmentations.at(motherID)*10000000 -motherbarcode));
+          childvtx->add_attribute("barcode",std::make_shared<HepMC3::IntAttribute>(-motherbarcode));
           // we attach it to the new vertex where interaction took place
           //
           childvtx->add_particle_out(mothertwo);
@@ -280,7 +282,7 @@ void MCTruthManager::PrintEvent()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 void MCTruthManager::PrintTree(HepMC3::GenParticlePtr particle, G4String offset)
 {
-  G4cout << offset << "---  barcode: " << particle->id() << " pdg: "//FIXME 
+  G4cout << offset << "---  barcode: " << HepMC3::barcode(particle) << " pdg: "
          << particle->pdg_id() << " energy: " << particle->momentum().e() 
          << " production vertex: "
          << particle->production_vertex()->position().x() << ", " 
@@ -293,8 +295,8 @@ void MCTruthManager::PrintTree(HepMC3::GenParticlePtr particle, G4String offset)
   {
     G4String deltaoffset = "";
 
-    G4int curr;// = std::fmod(double((*it)->barcode()),10000000.);
-    G4int part;// = std::fmod(double(particle->barcode()),10000000.);
+    G4int curr = std::fmod(double(HepMC3::barcode(it)),10000000.);
+    G4int part = std::fmod(double(HepMC3::barcode(particle)),10000000.);
     if( curr != part )
       {
         deltaoffset = " | ";

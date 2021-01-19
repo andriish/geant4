@@ -47,7 +47,7 @@
 #include "HepMC3/GenParticle.h"
 #include "HepMC3/GenVertex.h"
 #include "HepMC3/Print.h"
-
+#include "HepMC3/Attribute.h"
 #include "MCTruthConfig.hh"
 
 class MCTruthManager
@@ -96,4 +96,17 @@ private:
   void PrintTree(HepMC3::GenParticlePtr, G4String);
   
 };
+namespace HepMC3 {
+
+inline int barcode(HepMC3::GenParticlePtr p) {
+    if (!p) return 0;
+    auto barcode=p->attribute<HepMC3::IntAttribute>("barcode");
+    return barcode?(barcode->value()):p->id();
+}
+inline int barcode(HepMC3::GenVertexPtr p) {
+    if (!p) return 0;
+    auto barcode=p->attribute<HepMC3::IntAttribute>("barcode");
+    return barcode?(barcode->value()):p->id();
+}
+}
 #endif // INCLUDE_MCTRUTHMANAGER_H

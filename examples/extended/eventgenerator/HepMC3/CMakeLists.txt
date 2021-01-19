@@ -13,7 +13,6 @@ include(${Geant4_USE_FILE})
 # HepMC examples require HepMC
 #
 find_package(HepMC3 REQUIRED)
-
 add_subdirectory(HepMCEx01)
 add_subdirectory(HepMCEx02)
 add_subdirectory(MCTruth)
