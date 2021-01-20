@@ -57,7 +57,7 @@ add_executable(HepMCEx01 HepMCEx01.cc ${sources} ${headers})
 #                      ${PYTHIA6_LIBRARIES} gfortran)
 target_link_libraries(HepMCEx01 ${Geant4_LIBRARIES}
                       ${HEPMC_LIBRARIES} ${HEPMC_FIO_LIBRARIES}
-                      ${PYTHIA6_LIBRARIES})
+                      ${PYTHIA6_LIBRARIES} gfortran)
 
 # if pythia is compiled with g77, link with -lg2c instead.
 #target_link_libraries(HepMCEx01 ${Geant4_LIBRARIES}
