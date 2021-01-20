@@ -55,10 +55,9 @@ if(PYTHIA6_FOUND AND CMAKE_Fortran_COMPILER)
    message(STATUS "Fortran compiler found  Pythia6  were found ${Fortran_COMPILER_NAME} ")
    set( GENERATOR_LIBRARIES ${PYTHIA6_LIBRARIES} LHAPDF gfortran)
    set (generator_sources 
-  # ${PROJECT_SOURCE_DIR}/external/upevnt.F
-  # ${PROJECT_SOURCE_DIR}/external/upinit.F
-  # ${PROJECT_SOURCE_DIR}/external/upveto.F
-  ""
+   ${PROJECT_SOURCE_DIR}/external/upevnt.F
+   ${PROJECT_SOURCE_DIR}/external/upinit.F
+   ${PROJECT_SOURCE_DIR}/external/upveto.F
   )
 else()
   set(GENERATOR_LIBRARIES "")  
@@ -82,6 +81,16 @@ set (sources
               ${PROJECT_SOURCE_DIR}/src/H02PrimaryGeneratorAction.cc
               ${PROJECT_SOURCE_DIR}/src/H02PrimaryGeneratorMessenger.cc
               ${PROJECT_SOURCE_DIR}/src/H02SteppingAction.cc
+
+
+#              ${PROJECT_SOURCE_DIR}/src/HEPEvtcom.cc
+              ${PROJECT_SOURCE_DIR}/src/HepMC3G4AsciiReader.cc
+              ${PROJECT_SOURCE_DIR}/src/HepMC3G4AsciiReaderMessenger.cc
+              ${PROJECT_SOURCE_DIR}/src/HepMC3G4Interface.cc
+              ${PROJECT_SOURCE_DIR}/src/HepMC3G4PythiaInterface.cc
+              ${PROJECT_SOURCE_DIR}/src/HepMC3G4PythiaMessenger.cc
+
+
 ) 
 
 

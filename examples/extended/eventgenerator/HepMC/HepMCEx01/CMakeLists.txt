@@ -32,11 +32,24 @@ find_package(HepMC REQUIRED)
 # Find Pythia6 (optional package)
 #
 find_package(Pythia6 QUIET)
+SET(OLD_CMAKE_POSITION_INDEPENDENT_CODE ${CMAKE_POSITION_INDEPENDENT_CODE})
+SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
+message("Flags  ${CMAKE_Fortran_FLAGS}" )
+include(CheckLanguage)
+check_language(Fortran)
+SET(CMAKE_POSITION_INDEPENDENT_CODE ${OLD_CMAKE_POSITION_INDEPENDENT_CODE})
 if(PYTHIA6_FOUND)
   message(STATUS "G4 Examples: Pythia6 found. --> HepMCEx01 example with Pythia6 enabled.") 
-  add_definitions(-DG4LIB_USE_PYTHIA) 
+  add_definitions(-DG4LIB_USE_PYTHIA)
+    enable_language(Fortran)
+  set (generator_sources 
+   ${PROJECT_SOURCE_DIR}/external/upevnt.F
+   ${PROJECT_SOURCE_DIR}/external/upinit.F
+   ${PROJECT_SOURCE_DIR}/external/upveto.F
+   )
 else()
   set(PYTHIA6_LIBRARIES "")  
+  set (generator_sources "")
 endif()
 
 #----------------------------------------------------------------------------
@@ -51,13 +64,13 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(HepMCEx01 HepMCEx01.cc ${sources} ${headers})
+add_executable(HepMCEx01 HepMCEx01.cc ${sources} ${headers} ${generator_sources})
 #target_link_libraries(HepMCEx01 ${Geant4_LIBRARIES}
 #                      ${HEPMC_LIBRARIES} ${HEPMC_FIO_LIBRARIES}
 #                      ${PYTHIA6_LIBRARIES} gfortran)
 target_link_libraries(HepMCEx01 ${Geant4_LIBRARIES}
                       ${HEPMC_LIBRARIES} ${HEPMC_FIO_LIBRARIES}
-                      ${PYTHIA6_LIBRARIES} gfortran)
+                      ${PYTHIA6_LIBRARIES} LHAPDF gfortran)
 
 # if pythia is compiled with g77, link with -lg2c instead.
 #target_link_libraries(HepMCEx01 ${Geant4_LIBRARIES}

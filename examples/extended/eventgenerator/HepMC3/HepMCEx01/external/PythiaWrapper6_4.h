@@ -251,9 +251,6 @@ extern "C" {
   void pylist(int*);
   void pystat(int*);
   void pyevnt();
-  void upinit(){};
-  void upevnt(){};
-  void upveto(){};
 }
 
 // define methods to hide the subtle syntax necessary to call fortran from C++
