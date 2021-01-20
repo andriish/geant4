@@ -76,10 +76,10 @@ endforeach()
 # Add program to the project targets
 # (this avoids the need of typing the program name after make)
 #
-add_custom_target(MCTruth3 DEPENDS mctruthex)
+add_custom_target(MC3Truth DEPENDS mc3truthex)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-install(TARGETS mctruthex DESTINATION bin)
+install(TARGETS mc3truthex DESTINATION bin)
 
